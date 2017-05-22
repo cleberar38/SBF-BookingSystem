@@ -2,22 +2,26 @@ import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
 import Auth from '../modules/Auth';
 
+import strings  from './lang_config.jsx';
+import default_lang from './default_lang.jsx';
+
+strings.setLanguage(default_lang.lang);
 
 const Base = ({ children }) => (
   <div>
     <div className="top-bar">
       <div className="top-bar-left">
-        <IndexLink to="/">React App</IndexLink>
+        <IndexLink to="/">{strings.title}</IndexLink>
       </div>
 
       {Auth.isUserAuthenticated() ? (
         <div className="top-bar-right">
-          <Link to="/logout">Log out</Link>
+          <Link to="/logout">{strings.logout}</Link>
         </div>
       ) : (
         <div className="top-bar-right">
-          <Link to="/login">Log in</Link>
-          <Link to="/signup">Sign up</Link>
+          <Link to="/login">{strings.login}</Link>
+          <Link to="/signup">{strings.signup}</Link>
         </div>
       )}
 

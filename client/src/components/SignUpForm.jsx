@@ -4,6 +4,10 @@ import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
+import strings  from './lang_config.jsx';
+import default_lang from './default_lang.jsx';
+
+strings.setLanguage(default_lang.lang);
 
 const SignUpForm = ({
   onSubmit,
@@ -13,13 +17,13 @@ const SignUpForm = ({
 }) => (
   <Card className="container">
     <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Sign Up</h2>
+      <h2 className="card-heading">{strings.signup}</h2>
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Name"
+          floatingLabelText={strings.name}
           name="name"
           errorText={errors.name}
           onChange={onChange}
@@ -29,7 +33,7 @@ const SignUpForm = ({
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Email"
+          floatingLabelText={strings.email}
           name="email"
           errorText={errors.email}
           onChange={onChange}
@@ -39,7 +43,7 @@ const SignUpForm = ({
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Password"
+          floatingLabelText={strings.password}
           type="password"
           name="password"
           onChange={onChange}
@@ -49,10 +53,10 @@ const SignUpForm = ({
       </div>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="Create New Account" primary />
+        <RaisedButton type="submit" label={strings.createaccount} primary />
       </div>
 
-      <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText>
+      <CardText>{strings.douhaveaccount} <Link to={'/login'}>{strings.login}</Link></CardText>
     </form>
   </Card>
 );
