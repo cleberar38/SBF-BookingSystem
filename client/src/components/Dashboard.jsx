@@ -6,6 +6,7 @@ import Auth from '../modules/Auth';
 import strings  from './lang_config.jsx';
 import default_lang from './default_lang.jsx';
 import Searchfunction from './Searchfunction.jsx';
+import Calendar from './Calendar.jsx';
 import Header from './Header.jsx';
 
 strings.setLanguage(default_lang.lang);
@@ -13,6 +14,7 @@ strings.setLanguage(default_lang.lang);
 const Dashboard = () => (
   <div>
     <Searchfunction />
+    <Calendar />
   </div>
 );
 

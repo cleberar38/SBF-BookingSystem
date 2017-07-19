@@ -1,48 +1,100 @@
 import React from 'react';
-import AutoComplete from 'material-ui/AutoComplete';
-
-const plats = [
-  'Brogatan',
-  'Campus 1', 'Campus 2',
-  'Furutorpsplatsen 1', 'Furutorpsplatsen 2', 'Furutorpsplatsen 3',
-  'Gröningen 1', 'Gröningen 2', 'Gröningen 3', 'Gröningen 4', 'Gröningen 5', 'Gustav Aldofs kyrka 1', 'Gustav Aldofs kyrka 2', 'Gustav Aldofs kyrka 3',
-  'Henry Dunkers plats 1', 'Henry Dunkers plats 2', 'Henry Dunkers plats 3',
-  'Idrottens Hus 1', 'Idrottens Hus 2',
-  'Järnvägsgatan',
-  'Kajpromenaden 1', 'Kajpromenaden 2', 'Kallis 1', 'Kallis 2', 'Kungstorget 1', 'Kungstorget 2',
-  'Mäster Palms plats',
-  'Parapeten/Kvickbron 1', 'Parapeten/Kvickbron 1',
-  'Slottshagen', 'Stadsparken', 'Strandpromenaden 1', 'Strandpromenaden 2', 'Strandpromenaden 3', 'Sundstorget 1', 'Sundstorget 2', 'Sundstorget 3', 'Sundstorget 4', 'Sundstorget 5',
-  'Tropical Beach 1', 'Tropical Beach 2', 'Trädsgårdsgatan',
-];
+import {GridList, GridTile} from 'material-ui/GridList';
+import IconButton from 'material-ui/IconButton';
+import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
 const styles = {
-  Search:{
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'space-around',
-    top: 20,
-    left: 200,
+  },
+  gridList: {
+    width: 500,
+    height: 450,
+    overflowY: 'auto',
   },
 };
 
-const menuProps = {
-  desktop: true,
-  disableAutoFocus: true,
-};
-
-
+const tilesData = [
+  {
+    img: 'https://services.arcgis.com/sH96KgSw0uy6vpvJ/arcgis/rest/services/Streetfood_Helsingborg/FeatureServer/0/1/attachments/99',
+    title: 'Kungstorget',
+    author: 'jill111',
+    featured: true,
+  },
+  {
+    img: 'https://services.arcgis.com/sH96KgSw0uy6vpvJ/arcgis/rest/services/Streetfood_Helsingborg/FeatureServer/0/2/attachments/141',
+    title: 'Henry Dunkers plats',
+    author: 'pashminu',
+  },
+  {
+    img: 'https://services.arcgis.com/sH96KgSw0uy6vpvJ/arcgis/rest/services/Streetfood_Helsingborg/FeatureServer/0/3/attachments/143',
+    title: 'Henry Dunkers plats',
+    author: 'Danson67',
+  },
+  {
+    img: 'https://services.arcgis.com/sH96KgSw0uy6vpvJ/arcgis/rest/services/Streetfood_Helsingborg/FeatureServer/0/4/attachments/121',
+    title: 'Kajpromenaden',
+    author: 'fancycrave1',
+    featured: true,
+  },
+  {
+    img: 'https://services.arcgis.com/sH96KgSw0uy6vpvJ/arcgis/rest/services/Streetfood_Helsingborg/FeatureServer/0/4/attachments/121',
+    title: 'Kajpromenaden',
+    author: 'Hans',
+  },
+  {
+    img: 'https://services.arcgis.com/sH96KgSw0uy6vpvJ/arcgis/rest/services/Streetfood_Helsingborg/FeatureServer/0/6/attachments/101',
+    title: 'Kallis',
+    author: 'fancycravel',
+  },
+  {
+    img: 'https://services.arcgis.com/sH96KgSw0uy6vpvJ/arcgis/rest/services/Streetfood_Helsingborg/FeatureServer/0/7/attachments/125',
+    title: 'Trädgårdsgatan (går inte att boka från maj 2017)',
+    author: 'jill112',
+  },
+  {
+    img: 'https://services.arcgis.com/sH96KgSw0uy6vpvJ/arcgis/rest/services/Streetfood_Helsingborg/FeatureServer/0/8/attachments/127',
+    title: 'Campus',
+    author: 'BkrmadtyaKarki',
+  },
+  {
+    img: 'https://services.arcgis.com/sH96KgSw0uy6vpvJ/arcgis/rest/services/Streetfood_Helsingborg/FeatureServer/0/9/attachments/129',
+    title: 'Campus',
+    author: 'BkrmadtyaKarki1',
+  },
+  
+];
 
 /**
- * Two examples of filtering. The first uses `caseInsensitiveFilter`, the second uses `fuzzyFilter`,
- * and limits the number of results displayed using the `maxSearchResults` property.
+ * This example demonstrates "featured" tiles, using the `rows` and `cols` props to adjust the size of the tile.
+ * The tiles have a customised title, positioned at the top and with a custom gradient `titleBackground`.
  */
-const Searchfunction = () => (
-  <div>
-        <AutoComplete style={styles.Search}
-          hintText="Sök platser..."
-          dataSource={plats}
-          menuProps={menuProps}
-        />
-      </div>
+const GridListExampleComplex = () => (
+  <div style={styles.root}>
+    <GridList
+      cols={2}
+      cellHeight={200}
+      padding={1}
+      style={styles.gridList}
+    >
+      {tilesData.map((tile) => (
+        <GridTile
+          key={tile.img}
+          title={tile.title}
+          actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+          actionPosition="left"
+          titlePosition="top"
+          titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
+          cols={tile.featured ? 2 : 1}
+          rows={tile.featured ? 2 : 1}
+        >
+          <img src={tile.img} />
+        </GridTile>
+      ))}
+    </GridList>
+  </div>
 );
 
-export default Searchfunction;
+export default GridListExampleComplex;
