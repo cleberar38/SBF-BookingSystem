@@ -38,7 +38,7 @@ const menuProps = {
 const Searchfunction = () => (
   <div>
         <AutoComplete style={styles.Search}
-          hintText="Sök plats..."
+          hintText="Sök platser..."
           dataSource={plats}
           menuProps={menuProps}
         />
