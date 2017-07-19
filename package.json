@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --use-strict index.js",
-    "bundle": "webpack"
+    "bundle": "webpack --config webpack.config.js & exit & echo 'wait building your app...' \n\n echo 'press [ENTER] when finish' & npm start"
   },
   "repository": {
     "type": "git",
