@@ -11,7 +11,7 @@ strings.setLanguage(default_lang.lang);
 const HomePage = () => (
 	
   <Card className="container">
-    <CardTitle title={strings.title} subtitle="This is the home page." />
+    <CardTitle title={strings.title} subtitle="This is the hemsida demo." />
   </Card>
 );
 

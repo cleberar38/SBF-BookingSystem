@@ -7,7 +7,7 @@ import DatePicker from 'material-ui/DatePicker';
  */
 const Calendar = () => (
   <div className="calendar-container">
-    <DatePicker hintText="Landscape Dialog" mode="landscape" />
+    <DatePicker hintText="Click & Pick a date" mode="landscape" />
   </div>
 );
 

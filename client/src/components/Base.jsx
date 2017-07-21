@@ -1,29 +1,43 @@
 import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
 import Auth from '../modules/Auth';
+import AppBar from 'material-ui/AppBar';
 
 import strings  from './lang_config.jsx';
 import default_lang from './default_lang.jsx';
 
 strings.setLanguage(default_lang.lang);
 
+function handleTouchTap() {
+  alert('onTouchTap triggered on the title component');
+}
+
+const styles = {
+  title: {
+    cursor: 'pointer',
+  },
+};
+
 const Base = ({ children }) => (
   <div>
     <div className="top-bar">
-      <div className="top-bar-left">
-        <IndexLink to="/">{strings.title}</IndexLink>
-      </div>
+      <AppBar 
+        title={
+          <div className="top-bar-left">
+            <IndexLink to="/" style={{color: 'white'}}>{strings.title}</IndexLink>
+          </div>}>
 
-      {Auth.isUserAuthenticated() ? (
-        <div className="top-bar-right">
-          <Link to="/logout">{strings.logout}</Link>
-        </div>
-      ) : (
-        <div className="top-bar-right">
-          <Link to="/login">{strings.login}</Link>
-          <Link to="/signup">{strings.signup}</Link>
-        </div>
-      )}
+        {Auth.isUserAuthenticated() ? (
+          <div className="top-bar-right">
+            <Link to="/logout" style={{color: 'white'}}>{strings.logout}</Link>
+          </div>
+        ) : (
+          <div className="top-bar-right">
+            <Link to="/login" style={{color: 'white'}}>{strings.login}</Link>
+            <Link to="/signup" style={{color: 'white'}}>{strings.signup}</Link>
+          </div>
+        )}
+      </AppBar>
 
     </div>
 
