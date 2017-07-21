@@ -6,8 +6,8 @@ import DatePicker from 'material-ui/DatePicker';
  * You can also disable the Dialog passing `true` to the `disabled` property.
  */
 const Calendar = () => (
-  <div className="calendar-container">
-    <DatePicker hintText="Click & Pick a date" mode="landscape" />
+  <div className="center-container">
+    <DatePicker hintText="Datum yyyy/mm/dd" mode="landscape" />
   </div>
 );
 

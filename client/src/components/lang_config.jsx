@@ -17,7 +17,8 @@ let strings = new LocalizedStrings({
          ihaveaccount: "I already have an account",
          email: "E-mail",
          password: "Passsword",
-         name: "Name"
+         name: "Name",
+         sendBtn: "Send"
 	},
  	
    sv: {
@@ -35,7 +36,8 @@ let strings = new LocalizedStrings({
          ihaveaccount: "Jag har redan konto",
          email: "E-post",
          password: "Lösenord",
-         name: "Namn"
+         name: "Namn",
+         sendBtn: "Skicka"
    }
 
 });

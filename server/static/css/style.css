@@ -65,7 +65,7 @@ a:hover {
   padding: 0 16px;
   color: green;
 }
-.search-container, .calendar-container {
+.center-container {
   margin: 0 auto;
   text-align: center;
   max-width: 600px;
