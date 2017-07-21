@@ -12,6 +12,8 @@ import TimeMenu from './TimeMenu.jsx';
 
 strings.setLanguage(default_lang.lang);
 
+
+
 const Dashboard = () => (
   <div>
     <PlacesGrid />

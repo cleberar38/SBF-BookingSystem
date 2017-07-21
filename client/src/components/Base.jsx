@@ -20,7 +20,7 @@ const styles = {
 
 const Base = ({ children }) => (
   <div>
-    <div className="top-bar">
+    <div>
       <AppBar 
         title={
           <div className="top-bar-left">
