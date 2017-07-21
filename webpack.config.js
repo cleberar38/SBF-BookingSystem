@@ -1,8 +1,5 @@
 const path = require('path');
 var webpack = require('webpack');
-//var combineLoaders = require('webpack-combine-loaders');
-//var ExtractTextPlugin = require('extract-text-webpack-plugin');
-//var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   // the entry file for the bundle
@@ -16,12 +13,6 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
-    // ,
-    // new HtmlWebpackPlugin({
-    //   template: 'index.template.ejs',
-    //   inject: 'body'
-    // }),
-    // new WebpackNotifierPlugin()
   ],
   module: {
 

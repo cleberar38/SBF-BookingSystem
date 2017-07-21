@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('mongoose').model('User');
+const Plat = require('mongoose').model('Plat');
 const config = require('../../config');
 
 

@@ -75,6 +75,15 @@ function validateLoginForm(payload) {
   };
 }
 
+function getAllPlats(payload) {
+  
+  return {
+    success: true,
+    message,
+    errors
+  }
+}
+
 router.post('/signup', (req, res, next) => {
   const validationResult = validateSignupForm(req.body);
   if (!validationResult.success) {
@@ -113,8 +122,21 @@ router.post('/signup', (req, res, next) => {
   })(req, res, next);
 });
 
+router.post('/plats', (req, res, next) => {
+  const getPlatsResults = getAllPlats(req.body);
+  
+  if (!getPlatsResults.success) {
+    return res.status(400).json({
+      success: false,
+      message: getPlatsResults.message,
+      errors: getPlatsResults.errors
+    });
+  }
+});
+
 router.post('/login', (req, res, next) => {
   const validationResult = validateLoginForm(req.body);
+  
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,
