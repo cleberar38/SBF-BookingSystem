@@ -8,6 +8,8 @@ import default_lang from './default_lang.jsx';
 import Searchfunction from './Searchfunction.jsx';
 import Calendar from './Calendar.jsx';
 import Header from './Header.jsx';
+import Snackbars from './Snackbars.jsx';
+import TimeMenu from './TimeMenu.jsx';
 
 strings.setLanguage(default_lang.lang);
 
@@ -15,6 +17,8 @@ const Dashboard = () => (
   <div>
     <Searchfunction />
     <Calendar />
+    <Snackbars />
+    <TimeMenu />
   </div>
 );
 
