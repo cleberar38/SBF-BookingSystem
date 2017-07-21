@@ -12,17 +12,31 @@ import TimeMenu from './TimeMenu.jsx';
 
 strings.setLanguage(default_lang.lang);
 
-
-
-const Dashboard = () => (
+const Booking = ({
+	onSubmit,
+	onChange,
+	errors,
+	successMessage,
+	booking
+}) => (
   <div>
-    <PlacesGrid />
-    <Calendar />
-    <TimeMenu />
-    <div className="button-line center-container">
-		<RaisedButton type="submit" label={strings.sendBtn} primary />
-	</div>
+  	<form action="/" onSubmit={onSubmit}>
+	    <PlacesGrid onChange={onChange} />
+	    <Calendar />
+	    <TimeMenu />
+	    <div className="button-line center-container">
+			<RaisedButton type="submit" label={strings.sendBtn} primary />
+		</div>
+	</form>
   </div>
 );
 
-export default Dashboard;
+Booking.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
+  successMessage: PropTypes.string.isRequired,
+  booking: PropTypes.object.isRequired
+};
+
+export default Booking;

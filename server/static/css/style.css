@@ -72,3 +72,11 @@ a:hover {
   padding: 20px;
   
 }
+
+.app-background {
+  background: url(http://fishermanslandingrestaurant.com/wp-content/uploads/2014/05/main_background2.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;  
+}
