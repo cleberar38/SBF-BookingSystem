@@ -26,9 +26,9 @@ const Base = ({ children }) => (
     <div>
       <AppBar 
         title={
-          <div className="top-bar-left">
-            <IndexLink to="/" style={{color: 'white'}}>{strings.title}</IndexLink>
-          </div>}>
+        <div className="top-bar-left">
+        <IndexLink to="/" style={{color: 'white'}}>{strings.title}</IndexLink>
+        </div>}>
 
         {Auth.isUserAuthenticated() ? (
           <div className="top-bar-right">
@@ -41,12 +41,9 @@ const Base = ({ children }) => (
           </div>
         )}
       </AppBar>
-
     </div>
-
     { /* child component will be rendered here */ }
     {children}
-
   </div>
 );
 
