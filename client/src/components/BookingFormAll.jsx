@@ -15,6 +15,24 @@ import MenuItem from 'material-ui/MenuItem';
 
 strings.setLanguage(default_lang.lang);
 
+
+const days = ["Söndag", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag"];
+const months = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"];
+
+const d = new Date();
+const dateObj = new Date();
+const month = dateObj.getUTCMonth();
+const day = dateObj.getUTCDate();
+const year = dateObj.getUTCFullYear();
+const week = dateObj.getUTCDay();
+const time = dateObj.getHours();
+const minutes = dateObj.getUTCMinutes();
+
+const newdate = year + "/" + months[month] + "/" + day + "/" + days[week] + "/" + time + ":" + minutes ;
+
+console.log("THE NEW DATE: ", newdate);
+
+
 const styles = {
   root: {
     display: 'flex',
@@ -98,19 +116,19 @@ const BookingFormAll = ({
   <div>
   	<form action="/" onSubmit={onSubmit}>
   		<div style={styles.root}>
-  			<GridList
+  			<GridList 
   				cellHeight={180}
   				style={styles.gridList}
   			>
   				<Subheader>Platser</Subheader>
   				{tilesData.map((tile) => (
-  					<GridTile  onChange={onChange}
-  						key={tile.imgId}
+  					<GridTile  onClick={onChange}
+              key={tile.imgId}
   						title={tile.title}
   						subtitle={<span>by <b>{tile.author}</b></span>}
   						actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
   					>
-  						<img src={tile.img} />
+  						<img name={tile.imgId} src={tile.img} />
   					</GridTile>	
   				))}
   			</GridList>

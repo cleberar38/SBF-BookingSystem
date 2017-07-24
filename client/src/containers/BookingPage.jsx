@@ -86,13 +86,16 @@ class BookingPage extends React.Component {
   }
 
   changePlats(event) {
+    
     const plats = event.target.name;
-    const user = this.state.user;
-    user[field] = event.target.value;
 
     this.setState({
-      user
+      booking:{
+        plats: plats
+      }
     });
+
+    console.log("INSIDE CHANGE PLATS", this.state);
   }
 
   /**
@@ -124,7 +127,8 @@ class BookingPage extends React.Component {
         value={this.state.value}
         onSubmit={this.processForm}
         onChange={this.changePlats}
-        handleChange={this.handleChange}
+        handleTimeChange={this.handleTimeChange}
+        handleDateChange={this.handleDateChange}
         errors={this.state.errors}
         successMessage={this.state.successMessage}
         booking={this.state.booking} />
