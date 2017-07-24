@@ -3,12 +3,10 @@ import { Link } from 'react-router';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-
 import strings  from './lang_config.jsx';
 import default_lang from './default_lang.jsx';
 
 strings.setLanguage(default_lang.lang);
-
 
 const LoginForm = ({
   onSubmit,
@@ -18,7 +16,7 @@ const LoginForm = ({
   user
 }) => (
   <Card className="container">
-    <form action="/" onSubmit={onSubmit}>
+    <form action="/" onSubmit={ onSubmit }>
       <h2 className="card-heading">{strings.login}</h2>
 
       {successMessage && <p className="success-message">{successMessage}</p>}

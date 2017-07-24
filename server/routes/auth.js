@@ -79,8 +79,8 @@ function getAllPlats(payload) {
   
   return {
     success: true,
-    message,
-    errors
+    message: {},
+    errors: 'TEST ERRORS'
   }
 }
 

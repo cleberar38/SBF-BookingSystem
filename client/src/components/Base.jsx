@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
 import Auth from '../modules/Auth';
 import AppBar from 'material-ui/AppBar';
-
 import strings  from './lang_config.jsx';
 import default_lang from './default_lang.jsx';
 
@@ -12,6 +11,10 @@ function handleTouchTap() {
   alert('onTouchTap triggered on the title component');
 }
 
+const mainDiv = {
+    innerHeight: window.innerHeight
+};
+
 const styles = {
   title: {
     cursor: 'pointer',
@@ -19,7 +22,7 @@ const styles = {
 };
 
 const Base = ({ children }) => (
-  <div>
+  <div  style={{height: mainDiv.innerHeight}}>
     <div>
       <AppBar 
         title={

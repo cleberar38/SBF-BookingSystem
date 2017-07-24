@@ -1,7 +1,6 @@
 import React from 'react';
 import Auth from '../modules/Auth';
-import Booking from '../components/Booking.jsx';
-
+import BookingForm from '../components/BookingFormAll.jsx';
 
 class BookingPage extends React.Component {
 
@@ -20,6 +19,7 @@ class BookingPage extends React.Component {
     }
 
     this.state = {
+      value: 2,
       errors: {},
       successMessage,
       booking: {
@@ -29,8 +29,13 @@ class BookingPage extends React.Component {
       }
     };
 
+    this.handleChange = this.handleChange.bind(this);
     this.processForm = this.processForm.bind(this);
     this.changePlats = this.changePlats.bind(this);
+  }
+
+  handleChange(event, index, value) {
+       this.setState({value})
   }
 
   processForm(event) {
@@ -43,6 +48,7 @@ class BookingPage extends React.Component {
     const plats = encodeURIComponent(this.state.booking.plats);
     const formData = `user=${user}&daytaken=${daytaken}&plats=${plats}`;
 
+    console.log(formData);
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
@@ -80,7 +86,7 @@ class BookingPage extends React.Component {
   }
 
   changePlats(event) {
-    const field = event.target.name;
+    const plats = event.target.name;
     const user = this.state.user;
     user[field] = event.target.value;
 
@@ -102,7 +108,7 @@ class BookingPage extends React.Component {
     xhr.addEventListener('load', () => {
       if (xhr.status === 200) {
         this.setState({
-          booking: xhr.response.message
+          booking: xhr.response
         });
       }
     });
@@ -114,15 +120,16 @@ class BookingPage extends React.Component {
    */
   render() {
     return (
-      <Booking 
+      <BookingForm 
+        value={this.state.value}
         onSubmit={this.processForm}
         onChange={this.changePlats}
+        handleChange={this.handleChange}
         errors={this.state.errors}
         successMessage={this.state.successMessage}
         booking={this.state.booking} />
     );
   }
-
 }
 
 export default BookingPage;

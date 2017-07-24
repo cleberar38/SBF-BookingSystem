@@ -8,7 +8,9 @@ import default_lang from './default_lang.jsx';
 
 strings.setLanguage(default_lang.lang);
 
-const HomePage = () => (
+const HomePage = ({
+	
+}) => (
 	
   <Card className="container">
     <CardTitle title={strings.title} subtitle="This is the hemsida demo." />

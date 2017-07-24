@@ -1,8 +1,19 @@
 import React, { PropTypes } from 'react';
+import { Card, CardTitle, CardText } from 'material-ui/Card';
+import * as Colors from 'material-ui/styles/colors';
+import Auth from '../modules/Auth';
+import RaisedButton from 'material-ui/RaisedButton';
+import strings  from './lang_config.jsx';
+import default_lang from './default_lang.jsx';
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import Subheader from 'material-ui/Subheader';
+import DatePicker from 'material-ui/DatePicker';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
+
+strings.setLanguage(default_lang.lang);
 
 const styles = {
   root: {
@@ -77,37 +88,57 @@ const tilesData = [
   
 ];
 
-/**
- * This example demonstrates "featured" tiles, using the `rows` and `cols` props to adjust the size of the tile.
- * The tiles have a customised title, positioned at the top and with a custom gradient `titleBackground`.
- */
-const PlacesGrid = ({
-  onChange,
-  booking
+const BookingFormAll = ({
+	onSubmit,
+	onChange,
+  handleChange,
+	booking,
+  value
 }) => (
-  <div style={styles.root}>
-    <GridList
-      cellHeight={180}
-      style={styles.gridList}
-    >
-      <Subheader>Platser</Subheader>
-      {tilesData.map((tile) => (
-        <GridTile  onChange={onChange}
-          key={tile.imgId}
-          title={tile.title}
-          subtitle={<span>by <b>{tile.author}</b></span>}
-          actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-        >
-          <img src={tile.img} />
-        </GridTile>
-      ))}
-    </GridList>
+  <div>
+  	<form action="/" onSubmit={onSubmit}>
+  		<div style={styles.root}>
+  			<GridList
+  				cellHeight={180}
+  				style={styles.gridList}
+  			>
+  				<Subheader>Platser</Subheader>
+  				{tilesData.map((tile) => (
+  					<GridTile  onChange={onChange}
+  						key={tile.imgId}
+  						title={tile.title}
+  						subtitle={<span>by <b>{tile.author}</b></span>}
+  						actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+  					>
+  						<img src={tile.img} />
+  					</GridTile>	
+  				))}
+  			</GridList>
+  		</div>
+      <div className="center-container">
+        <DatePicker hintText="Datum yyyy/mm/dd" mode="landscape" />
+      </div>
+	    <div className="center-container">
+        <DropDownMenu value={value} onChange={handleChange}>
+          <MenuItem value={1} label="06:00 - 10:00" primaryText="06:00 - 10:00" />
+          <MenuItem value={2} label="10:00 - 15:00" primaryText="10:00 - 15:00" />
+          <MenuItem value={4} label="15:00 - 20:00" primaryText="15:00 - 20:00" />
+          <MenuItem value={5} label="20:00 - 24:00" primaryText="20:00 - 24:00" />
+          <MenuItem value={6} label="24:00 - 04:00" primaryText="24:00 - 04:00" />
+        </DropDownMenu>
+      </div>
+	    <div className="button-line center-container">
+			<RaisedButton type="submit" label={strings.sendBtn} primary />
+		</div>
+	</form>
   </div>
 );
 
-PlacesGrid.propTypes = {
+BookingFormAll.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  booking: PropTypes.object.isRequired
+  booking: PropTypes.object.isRequired,
+  value: PropTypes.number.isRequired
 };
 
-export default PlacesGrid;
+export default BookingFormAll;
